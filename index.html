@@ -11,29 +11,10 @@
 </head>
   <body ng-app="ngWebglDemo">
     <div class="container" ng-controller="AppCtrl">
-
+    <div>
         
-        <div 
-          id="webglContainer" 
-          ng-webgl
-          width="canvasWidth"
-          height="canvasHeight"
-          fillcontainer="dofillcontainer"
-          scale="scale"
-          material-type="materialType"
-        ></div>
-
-
-
         <label for="scale">Scale Object</label>
-        <input type="range" name="scale" min="0.1" max="1.2" step="0.1" ng-model="scale" class="add-bottom">
-
-        <label for="canvasWidth">Canvas Width</label>
-        <input type="text" id="canvasWidth" ng-model="canvasWidth" ng-disabled="dofillcontainer">
-
-        <label for="canvasHeight">Canvas Height</label>
-        <input type="text" id="canvasHeight" ng-model="canvasHeight" ng-disabled="dofillcontainer">
-
+        <input type="range" name="scale" min="0.1" max="5" step="0.1" ng-model="scale" >        
         <label for="materialsList">Material Type</label>
           <select id="materialsList" ng-model="materialType">
             <option value="lambert">Lambert</option>
@@ -41,13 +22,51 @@
             <option value="wireframe">Wire Frame</option>
           </select>
 
-        <label for="dofillcontainer">
-          <input type="checkbox" id="dofillcontainer" ng-model="dofillcontainer"/>
-          <span>Responsive Canvas</span>
-        </label>
-
-
     </div><!-- END CONTAINER -->
+
+<div id = "webgl">
+        
+        <a 
+          id="webglContainer1" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          scale="scale"
+          material-type="materialType"
+        ></a>
+        <a 
+          id="webglContainer2" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          scale="scale"
+          material-type="materialType"
+        ></a>
+        <a 
+          id="webglContainer3" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          scale="scale"
+          material-type="materialType"
+        ></a>
+        <a 
+          id="webglContainer4" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          scale="scale"
+          material-type="materialType"
+        ></a>
+         <a 
+          id="webglContainer5" 
+          ng-webgl
+          width="canvasWidth"
+          height="canvasHeight"
+          scale="scale"
+          material-type="materialType"
+        ></a>
+</div>
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -9,15 +9,14 @@ angular.module('ngWebglDemo')
         'height': '=',
         'fillcontainer': '=',
         'scale': '=',
-        'materialType': '='
+        'materialType': '=',
       },
       link: function postLink(scope, element, attrs) {
-
+        //count++;
         var camera, scene, renderer,
           shadowMesh, icosahedron, light,
           mouseX = 0, mouseY = 0,
-          contW = (scope.fillcontainer) ? 
-            element[0].clientWidth : scope.width,
+          contW =  scope.width,
           contH = scope.height, 
           windowHalfX = contW / 2,
           windowHalfY = contH / 2,
@@ -156,8 +155,7 @@ angular.module('ngWebglDemo')
         // -----------------------------------
         scope.resizeCanvas = function () {
 
-          contW = (scope.fillcontainer) ? 
-            element[0].clientWidth : scope.width;
+          contW =  scope.width;
           contH = scope.height;
 
           windowHalfX = contW / 2;
@@ -174,6 +172,16 @@ angular.module('ngWebglDemo')
 
           icosahedron.scale.set(scope.scale, scope.scale, scope.scale);
           shadowMesh.scale.set(scope.scale, scope.scale, scope.scale);
+          contW =  scope.width*scope.scale*2;
+          contH = scope.height*scope.scale*2;
+
+          windowHalfX = contW / 2;
+          windowHalfY = contH / 2;
+
+          camera.aspect = contW / contH;
+          camera.updateProjectionMatrix();
+
+          renderer.setSize( contW, contH );
 
         };
 
@@ -205,22 +213,17 @@ angular.module('ngWebglDemo')
           renderer.render( scene, camera );
 
         };
-
+      
         // -----------------------------------
         // Watches
         // -----------------------------------
-        scope.$watch('fillcontainer + width + height', function () {
-
-          scope.resizeCanvas();
         
-        });
-
         scope.$watch('scale', function () {
         
           scope.resizeObject();
         
         });
-
+        
         scope.$watch('materialType', function () {
         
           scope.changeMaterial();
